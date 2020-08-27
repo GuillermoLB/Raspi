@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<label class="btn btn-primary">
+    Browse <input type="file" hidden>
+</label>
+{{ form.archivo(class="form-control-file, white_text") }} <br/>
+{{ form.submit(class="btn btn-primary btn-sm") }}
+{% endblock %}

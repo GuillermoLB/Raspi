@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block contenido %}
+
+<p>
+<br>
+</p>
+
+<div class="container-fluid white_text">
+    <div class="row">
+      <div class="col-lg">
+        <img src="{{ url_for('video_feed') }}" class="img-fluid rounded float-left img-thumbnail-custom" alt="Responsive image" width="100%">
+      </div>
+      <div class="col-md">
+        <form action="" method="post">
+        
+            {{ form.hidden_tag() }}
+            {% if servo1.activado %}
+            {{ form.submit(class="btn btn-outline-danger btn-lg btn-block") }}
+            {% else %}
+            {{ form.submit(class="btn btn-outline-success btn-lg btn-block") }}
+            {% endif %}
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

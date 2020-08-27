@@ -1,0 +1,141 @@
+<html>
+    <head> 
+        {% if titulo %} <!--las variables provienen tanto de los argumentos de las funciones en rutas.py (titulo) como de las definidas en el init.py(curren_user,moment)-->
+        <title>{{ titulo }} - COVOS_WEB</title>
+        {% else %}
+        <title>COVOS_WEB</title>
+        {% endif %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/estilos.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--<script src="https://cdn.rawgit.com/download/glyphicons/0.1.0/glyphicons.js"></script>-->
+    <script src="https://use.fontawesome.com/657f1f3305.js"></script>
+    </head>
+    <body class="bg-custom">
+        <nav class="navbar navbar-expand-lg navbar-custom mb-2"> <!--menu desplegable-->
+            <!--<a class="navbar-brand" href="#"><img class="img-fluid" src="{{ url_for('static', filename='icons/casa.png') }}" width="30" height="30" alt="icono-logo"></a>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> <!-- imagen del boton -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"> <!--boton inicio-->
+                <ul class="navbar-nav mr-auto"> <!--alineado a la izquierda-->
+                    <li class="nav-item">
+                        <a class="btn btn-outline-info btn-lg btn-block custom-navlink" href="{{ url_for('index') }}">
+                            <svg viewBox="0 0 16 16" class="bi bi-house-fill navbar-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                          </svg><br/>inicio
+                        </a>
+                    </li>
+                    {% if current_user.is_anonymous %}
+
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-outline-info btn-lg btn-block custom-navlink" href="{{ url_for('streaming') }}">
+                            <svg viewBox="0 0 16 16" class="bi bi-camera-video-fill navbar-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.667 3h6.666C10.253 3 11 3.746 11 4.667v6.666c0 .92-.746 1.667-1.667 1.667H2.667C1.747 13 1 12.254 1 11.333V4.667C1 3.747 1.746 3 2.667 3z"/>
+                                <path d="M7.404 8.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V4.308c0-.63-.693-1.01-1.233-.696L7.404 7.304a.802.802 0 0 0 0 1.393z"/>
+                            </svg><br/> Streaming
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-info btn-lg btn-block custom-navlink" href="{{ url_for('streaming') }}">
+                            <svg viewBox="0 0 16 16" class="bi bi-folder-fill navbar-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
+                              </svg><br/>Archivos
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"><!--boton login o perfil y cerrar sesion-->
+                <ul class="navbar-nav ml-auto"> <!--alineado a la derecha-->
+                    {% if current_user.is_anonymous %}
+                    <li class="nav-item">
+                        <a class="btn btn-outline-info btn-lg btn-block custom-navlink" href="{{ url_for('login') }}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill navbar-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                          </svg><br/>Login
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-outline-info btn-lg btn-block custom-navlink dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill navbar-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                          </svg><br/>{{current_user.username}}
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-sm-right navbar-color custom-dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a>
+
+
+                          </div>
+                      </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+ 
+        </nav>
+
+        <div class="container-fluid mt-3">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-primary" role="alert">
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {% block contenido %}
+            {% endblock %}
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+            
+
+        <script>
+            function uniPython_lang(){ // solo para traducir al español las fechas
+                moment.lang('es', {
+                months: 'Enero_Febrero_Marzo_Abril_Mayo_Junio_Julio_Agosto_Septiembre_Octubre_Noviembre_Diciembre'.split('_'),
+                monthsShort: 'En._Feb._Mar_Abr._May_Jun_Jul._Ago_Sept._Oct._Nov._Dec.'.split('_'),
+                weekdays: 'Domingo_Lunes_Martes_Miercoles_Jueves_Viernes_Sabado'.split('_'),
+                weekdaysShort: 'Dom._Lun._Mar._Mier._Jue._Vier._Sab.'.split('_'),
+                weekdaysMin: 'Do_Lu_Ma_Mi_Ju_Vi_Sa'.split('_')
+            });
+        }
+
+        $(document).ready(function(){
+            uniPython_lang();
+        })
+
+        /* Input para la imagen del post */
+            $(document).ready(function () {
+                $('#input-html').click(function (event) {
+                    event.preventDefault();
+                    $('#imagen').click()
+                    $('#imagen').change(function () {
+                        var $nombreArchivo = $('#imagen').val()
+                        var $nombreSplit = $nombreArchivo.split('\\')
+                        $('#p-imagen').text($nombreSplit[2])
+                    })
+                })
+            });
+        </script>
+        {{ moment.include_moment() }} <!--incluimos moment en base para que el resto de plantillas lo hereden-->
+
+    </body>
+</html>

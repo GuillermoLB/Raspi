@@ -1,0 +1,129 @@
+.bg-custom {
+    background-color: #292929 !important;
+  }
+
+
+.white_text {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+
+
+.btn-custom {
+    color: #fff;
+    background-color: #5e00da;
+  }
+  
+  .btn-custom:hover { /*pasar por encima*/
+    color:  #ffffff83;
+    background-color: #5e00ff85;
+  }
+  
+  .btn-custom:focus, .btn-custom.focus { /*mientras mantienes el click*/
+    color: #ffffff42;
+    background-color: #5e00ff48;
+  }
+  
+  
+
+  
+
+
+/* change the background color */
+.navbar-custom {
+  background-color: #00000088;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #ffffff;
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff;
+    font-size: 20px;
+    padding: 20px;
+    /*font-weight: bold;*/
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff88;
+}
+
+  
+  .navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 50px !important;
+    height:50px !important;
+  }
+
+  .btn-square{
+
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial;
+    color: white;
+  }
+
+  .btn-square:hover { /*pasar por encima*/
+    color:  #ffffff83;
+  }
+  
+  .btn-square:focus, .btn-square.focus { /*mientras mantienes el click*/
+    color: #ffffff42;
+  }
+
+
+  .icon {
+    padding-top: 5px;
+    float: left;
+    text-align: left;
+    width:50px;
+    height:50px;
+
+
+  }
+
+  .navbar-icon {
+    width:30px;
+    height:30px;
+
+
+  }
+
+  .img-thumbnail-custom { /*marco del streaming*/
+    padding: 4px;
+    background-color: #17a3b8a9;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .custom-navlink { /*elementos de navegacion de la navbar*/
+
+    padding-top: 5px;
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: x-large;
+
+  }
+
+  .btn-custom-size {
+
+    font-size: xx-large;
+
+
+  }
+
+  .custom-dropdown-menu{
+
+
+
+    background-color: #106b79;
+  }
+

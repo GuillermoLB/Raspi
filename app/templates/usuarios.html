@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<table>
+    <tr valign="top">
+        <td><img src="{{ usuario.imagen_perfil(128) }}"></td> <!-- recordar que usuario es la consulta que hicimos con el la clase Usuario y por eso podemos usar su método imagen_perfil() -->
+        <td>
+            <h1>Usuario: {{ usuario.username }}</h1>
+            {% if usuario.sobre_mi %}<p>{{ usuario.sobre_mi }}</p>{% endif %}
+            {% if usuario.ultima_sesion %}
+                <p>Ultima vez activo: {{ moment(usuario.ultima_sesion).format('DD [de] MMMM [del] YYYY [a las] h:mm a') }}</p>
+            {% endif %}
+            {% if usuario == current_user %}
+                <p><a href="{{ url_for('editar_perfil') }}">Editar perfil</a></p>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+<hr>
+{% endblock %}
